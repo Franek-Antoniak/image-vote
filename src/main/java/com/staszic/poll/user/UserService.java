@@ -48,7 +48,10 @@ public class UserService {
         if (!user.vote()) {
             throw new AccessDeniedException("Too many votes!");
         }
+        if(user.getHashSet().contains(realImage.getUniqueId()))
+            return;
         realImage.vote();
+        user.getHashSet().add(realImage.getUniqueId());
         userRepository.save(user);
         imageRepository.save(realImage);
     }
@@ -75,7 +78,7 @@ public class UserService {
 
     public ResponseEntity<String> getHomePage() throws Exception {
         User user = getIfUserExistsOrCreate();
-        List<Image> imageList = imageRepository.findAllByOrderByVotesAsc();
+        List<Image> imageList = imageRepository.findAll();
         if(user.getVotes() == 0)
             return freeMarkerService.getResponseEntityHTML("error-403.ftl", HttpStatus.FORBIDDEN);
         return freeMarkerService.getResponseEntityHTML(

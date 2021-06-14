@@ -9,6 +9,6 @@ public interface ImageRepository extends JpaRepository<Image, Long> {
 
     Optional<Image> findByAuthor(String author);
 
-    List<Image> findAllByOrderByVotesAsc();
+    List<Image> findAllByOrderByVotesDesc();
 
 }

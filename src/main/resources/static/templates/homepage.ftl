@@ -64,7 +64,7 @@
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('#aut${image?index}')">Zagłosuj</button></div>
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('#aut${image?index}');delayUrlLoad('/', 10);">Zagłosuj</button></div>
           </div>
         </div>
       </div>
@@ -81,5 +81,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="/js/homepage.js"></script>
+<script>
+    function delayUrlLoad(url, mils)
+    {
+        setTimeout(function() {
+            window.location.href = url;
+        }, mils)
+    }
+</script>
 </body>
 </html>

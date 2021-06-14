@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -20,6 +22,7 @@ public class User {
     private Integer votes = 3;
     private String name;
     private boolean castVote = false;
+    private HashSet<UUID> hashSet = new HashSet<>();
 
     public boolean vote() {
         if(votes > 0)

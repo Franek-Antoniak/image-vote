@@ -39,7 +39,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Wyniki głosowania</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Opcja udostępnienia strony uczniom jest w menu</p>
+            <p class="lead fw-normal text-white-50 mb-0">Dostęp do strony jest możliwy tylko dla administratora</p>
         </div>
     </div>
 </header>

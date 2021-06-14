@@ -49,7 +49,7 @@ public class ImageService {
     }
 
     public ResponseEntity<String> getAllImagesWithResult() {
-        List<Image> imageList = imageRepository.findAllByOrderByVotesAsc();
+        List<Image> imageList = imageRepository.findAllByOrderByVotesDesc();
         return freeMarkerService.getResponseEntityHTML("results.ftl", "imageList", imageList);
     }
 }
