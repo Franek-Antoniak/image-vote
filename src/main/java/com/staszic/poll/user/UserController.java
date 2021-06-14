@@ -1,5 +1,6 @@
 package com.staszic.poll.user;
 
+import com.staszic.poll.error.DataBaseSelectException;
 import com.staszic.poll.freemarker.FreeMarkerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

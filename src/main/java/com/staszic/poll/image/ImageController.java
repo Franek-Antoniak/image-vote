@@ -1,6 +1,8 @@
 package com.staszic.poll.image;
 
 
+import com.staszic.poll.error.DataBaseSelectException;
+import com.staszic.poll.error.ForbiddenImgUploadException;
 import com.staszic.poll.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

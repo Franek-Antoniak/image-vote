@@ -1,6 +1,8 @@
 package com.staszic.poll.user;
 
 
+import com.staszic.poll.error.DataBaseSelectException;
+import com.staszic.poll.error.ForbiddenImgUploadException;
 import com.staszic.poll.freemarker.FreeMarkerService;
 import com.staszic.poll.image.Image;
 import com.staszic.poll.image.ImageRepository;
