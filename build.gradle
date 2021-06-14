@@ -39,10 +39,10 @@ dependencies {
 	// SECURITY
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-test'
+}
 
-
-
-
+springBoot {
+	mainClass = 'com.staszic.poll.PollApplication'
 }
 
 test {
