@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
@@ -44,7 +44,7 @@
     </div>
 </header>
 <!-- Section-->
-<section class="py-5" style="min-height: 285px;">
+<content class="py-5" style="min-height: 285px;">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <!-- box-start -->
@@ -72,9 +72,9 @@
             <!-- box-end -->
         </div>
     </div>
-</section>
+</content>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark mt-auto">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Paco 2021</p></div>
 </footer>
 <!-- Bootstrap core JS-->
