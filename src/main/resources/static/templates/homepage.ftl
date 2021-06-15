@@ -65,7 +65,7 @@
           </div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('#aut${image?index}');delayUrlLoad('/', 400);">Zagłosuj</button></div>
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('#aut${image?index}');delayUrlLoad('/', 750);">Zagłosuj</button></div>
           </div>
         </div>
       </div>

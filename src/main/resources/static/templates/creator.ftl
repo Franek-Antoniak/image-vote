@@ -63,7 +63,7 @@
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <input class="btn btn-outline-dark mt-auto" type="button" id="imageSubmit" value="Wyślij Obraz" onclick="delayUrlLoad('/', 750)"/>
+                <input class="btn btn-outline-dark mt-auto" type="button" id="imageSubmit" value="Wyślij Obraz" onclick="delayUrlLoad('/', 1500)"/>
               </div>
             </div>
         </div>
