@@ -31,14 +31,9 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/creator")
-    public ResponseEntity<String> creator() throws Exception {
-        try {
+    @GetMapping("/admin/creator")
+    public ResponseEntity<String> creator() {
             return userService.getCreatorIfUserCanUpload();
-        } catch (DataBaseSelectException e) {
-            e.printStackTrace();
-            return freeMarkerService.getResponseEntityHTML("error-403.ftl", HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @PatchMapping("/user/vote/{author}")
@@ -46,7 +41,6 @@ public class UserController {
         try {
             userService.voteByUser(author);
         } catch (AccessDeniedException e) {
-            // sprawdz co to robi
             return ResponseEntity.
                     status(HttpStatus.FORBIDDEN)
                     .body("Too many votes!");

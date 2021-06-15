@@ -40,7 +40,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/creator">Kreator</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
         <li class="nav-item dropdown">

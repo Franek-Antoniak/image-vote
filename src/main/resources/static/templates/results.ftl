@@ -26,7 +26,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
-                <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/creator">Kreator</a></li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
                 <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
                 <li class="nav-item dropdown">
@@ -52,10 +52,12 @@
             <#list imageList as image>
             <div class="col mb-5">
                 <div class="card h-100">
-                    <!-- Click badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Click</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="${image.path}" alt="..." />
+                    <a href="${image.path}">
+                        <!-- Click badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Click</div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src="${image.path}" alt="..." />
+                    <a/>
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">

@@ -69,10 +69,7 @@ public class UserService {
         return optionalImage.orElseThrow(DBExceptionSup);
     }
 
-    public ResponseEntity<String> getCreatorIfUserCanUpload() throws Exception {
-        User user = getIfUserExistsOrCreate();
-        if(user.isCastVote())
-            return freeMarkerService.getResponseEntityHTML("error-403.ftl", HttpStatus.FORBIDDEN);
+    public ResponseEntity<String> getCreatorIfUserCanUpload() {
         return freeMarkerService.getResponseEntityHTML("creator.ftl");
     }
 

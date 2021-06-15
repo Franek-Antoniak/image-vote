@@ -26,7 +26,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/creator">Kreator</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
         <li class="nav-item dropdown">
@@ -45,17 +45,19 @@
   </div>
 </header>
 <!-- Section-->
-<content class="py-5">
+<section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
     <!-- box-start -->
     <#list imageList as image>
       <div class="col mb-5">
         <div class="card h-100">
+          <a href="${image.path}">
           <!-- Click badge-->
-          <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Click</div>
-          <!-- Product image-->
-          <img class="card-img-top" src="${image.path}" alt="..." />
+              <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Click</div>
+              <!-- Product image-->
+              <img class="card-img-top" src="${image.path}" alt="..."/>
+          </a>
           <!-- Product details-->
           <div class="card-body p-4">
             <div class="text-center">
@@ -69,11 +71,11 @@
           </div>
         </div>
       </div>
-      </#list>
-      <!-- box-end -->
+    </#list>
+    <!-- box-end -->
     </div>
   </div>
-</content>
+</section>
 <!-- Footer-->
 <footer class="py-5 bg-dark mt-auto">
   <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Paco 2021</p></div>
