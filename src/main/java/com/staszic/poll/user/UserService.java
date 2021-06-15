@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Supplier;
 
 @Service
@@ -42,8 +43,8 @@ public class UserService {
         return optionalUser.orElseThrow(DBExceptionSup);
     }
 
-    public void voteByUser(String author) throws Exception {
-        Image realImage = getIfImageExists(author);
+    public void voteByUser(String uniqueId) throws Exception {
+        Image realImage = getIfImageExists(UUID.fromString(uniqueId));
         User user = getIfUserExistsOrCreate();
         if (!user.vote()) {
             throw new AccessDeniedException("Too many votes!");
@@ -58,14 +59,14 @@ public class UserService {
 
     public void addAuthorshipAndCreate() throws Exception {
         User user = getIfUserExistsOrCreate();
-        if(user.isCastVote())
+/*        if(user.isCastVote())
             throw new ForbiddenImgUploadException("Too many votes");
-        user.setCastVote(true);
+        user.setCastVote(true);*/
         userRepository.save(user);
     }
 
-    public Image getIfImageExists(String author) throws Exception {
-        Optional<Image> optionalImage = imageRepository.findByAuthor(author);
+    public Image getIfImageExists(UUID uniqueId) throws Exception {
+        Optional<Image> optionalImage = imageRepository.findByUniqueId(uniqueId);
         return optionalImage.orElseThrow(DBExceptionSup);
     }
 

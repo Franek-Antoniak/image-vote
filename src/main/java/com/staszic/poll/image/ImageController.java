@@ -28,9 +28,9 @@ public class ImageController {
             imageService.saveImage(imageFile);
         } catch (NullPointerException e) {
             System.out.println("MultipartFile has Null" + e.getMessage());
-        } catch (ForbiddenImgUploadException e) {
-            System.out.println("Too many image uploads by User" + e.getMessage());
-        } catch (DataBaseSelectException e) {
+        } /*catch (ForbiddenImgUploadException e) {
+            System.out.println("Too many image uploads by User, Exception: " + e.getMessage());
+        }*/ catch (DataBaseSelectException e) {
             System.out.println("SELECT exception: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("No such path/file" + e.getMessage());

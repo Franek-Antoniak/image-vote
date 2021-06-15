@@ -36,10 +36,10 @@ public class UserController {
             return userService.getCreatorIfUserCanUpload();
     }
 
-    @PatchMapping("/user/vote/{author}")
-    public ResponseEntity<String> vote(@PathVariable String author) throws Exception {
+    @PatchMapping("/user/vote/{uniqueId}")
+    public ResponseEntity<String> vote(@PathVariable String uniqueId) throws Exception {
         try {
-            userService.voteByUser(author);
+            userService.voteByUser(uniqueId);
         } catch (AccessDeniedException e) {
             return ResponseEntity.
                     status(HttpStatus.FORBIDDEN)

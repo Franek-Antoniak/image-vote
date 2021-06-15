@@ -4,10 +4,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface ImageRepository extends JpaRepository<Image, Long> {
 
-    Optional<Image> findByAuthor(String author);
+    Optional<Image> findByUniqueId(UUID uniqueId);
 
     List<Image> findAllByOrderByVotesDesc();
 

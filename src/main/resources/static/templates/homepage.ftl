@@ -59,15 +59,10 @@
               <img class="card-img-top" src="${image.path}" alt="..."/>
           </a>
           <!-- Product details-->
-          <div class="card-body p-4">
-            <div class="text-center">
-              <!-- Product name-->
-              <h5 class="fw-bolder" id="aut${image?index}">${image.author}</h5>
-            </div>
-          </div>
+          <div class="card-body p-4"></div>
           <!-- Product actions-->
           <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('#aut${image?index}');delayUrlLoad('/', 750);">Zagłosuj</button></div>
+            <div class="text-center"><button class="btn btn-outline-dark mt-auto" onclick="vote('${image.uniqueId}');delayUrlLoad('/', 750);">Zagłosuj</button></div>
           </div>
         </div>
       </div>
