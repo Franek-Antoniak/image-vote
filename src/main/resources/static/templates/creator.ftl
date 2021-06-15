@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="Poll Site" />
   <meta name="author" content="Franek Antoniak" />
-  <title>Poll Site - Creator Page</title>
+  <title>Creator Page</title>
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="/assets/homepage.ico" />
   <!-- Bootstrap icons-->
@@ -27,6 +27,7 @@
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
         <li class="nav-item dropdown">
       </ul>
@@ -44,7 +45,7 @@
   </div>
 </header>
 <!-- Section-->
-<content class="py-5">
+<section class="py-5">
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       <div class="col mb-5">
@@ -69,7 +70,7 @@
       </div>
     </div>
   </div>
-</content>
+</section>
 <!-- Footer-->
 <footer class="py-5 bg-dark mt-auto">
   <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Paco 2021</p></div>
@@ -77,7 +78,6 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/homepage.js"></script>
 <script src="/js/sender.js"></script>
 <script>
     function delayUrlLoad(url, mils)

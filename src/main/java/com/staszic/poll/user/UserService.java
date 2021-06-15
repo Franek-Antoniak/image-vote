@@ -86,4 +86,8 @@ public class UserService {
                 new String[]{"user", "imageList"},
                 new Object[]{user, imageList});
     }
+
+    public ResponseEntity<String> getSettings() {
+        return freeMarkerService.getResponseEntityHTML("settings.ftl");
+    }
 }

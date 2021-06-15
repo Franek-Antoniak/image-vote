@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Error 403" />
     <meta name="author" content="Franek Antoniak" />
-    <meta name="description" content="Error Site" />
+    <meta name="description" content="Error Page" />
     <meta charset="UTF-8">
     <title>Error 403 - Only For Admin</title>
     <link href="/css/error403.css" rel="stylesheet"/>
@@ -41,6 +41,7 @@
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
         <li class="nav-item dropdown">
       </ul>

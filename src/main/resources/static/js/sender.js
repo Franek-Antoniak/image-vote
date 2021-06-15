@@ -43,3 +43,13 @@ function processUpload()
                     }
                 });
           }
+
+function deleteData() {
+    $.ajax({
+        type: "PATCH",
+        url: "/admin/delete/data",
+        error: function(xhr, status, err) {
+            console.error(xhr, status, err.toString());
+        }.bind(this)
+    });
+}

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="Poll Site" />
     <meta name="author" content="Franek Antoniak" />
-    <title>Results Page</title>
+    <title>Settings Page</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="/assets/homepage.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/homepage.css" rel="stylesheet" />
+    <link href="/css/homepage.css" rel="stylesheet"/>
+    <link href="/css/settings.css" rel="stylesheet"/>
     <!-- Log out scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -39,38 +40,49 @@
 <header class="bg-dark py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Wyniki głosowania</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Dostęp do strony jest możliwy tylko dla administratora</p>
+            <h1 class="display-4 fw-bolder">Zmień ustawienia aplikacji</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Ustawienia dostępne jedynie dla administratora</p>
         </div>
     </div>
 </header>
 <!-- Section-->
-<section class="py-5" style="min-height: 285px;">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-            <!-- box-start -->
-            <#list imageList as image>
-            <div class="col mb-5">
-                <div class="card h-100">
-                    <!-- Click badge-->
-                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Click</div>
-                    <!-- Product image-->
-                    <img class="card-img-top" src="${image.path}" alt="..." />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder">${image.author}</h5>
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                <h2 class="h3 mb-4 page-title">Ustawienia</h2>
+                <div class="my-4">
+                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bazy danych</a>
+                        </li>
+                    </ul>
+                    <h5 class="mb-0 mt-5">Ustawienia bazy danych</h5>
+                    <hr class="my-4"/>
+                    <strong class="mb-0">Operacje na danych</strong>
+                    <p>Kliknij przycisk aby wysłać polecenie do bazy danych</p>
+                    <!-- Start of Operacje na danych -->
+                    <div class="list-group mb-5 shadow">
+                        <!-- Start of first setting -->
+                        <div class="list-group-item">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <strong class="mb-0">Wyczyść wszystkie dane</strong>
+                                    <p class="text-muted mb-0">Usuwa wszystkie informacje o użytkownikach oraz ich obrazach</p>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="custom-control custom-switch">
+                                        <button class="btn btn-outline-dark" onclick="deleteData()">Wyczyść dane</button>
+                                        <span class="custom-control-label"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <!-- End of first setting -->
                     </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark">Liczba głosów: ${image.votes}</a></div>
-                    </div>
+                    <!-- End of Operacje na danych -->
                 </div>
             </div>
-            </#list>
-            <!-- box-end -->
         </div>
     </div>
 </section>
@@ -80,5 +92,7 @@
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/sender.js"></script>
 </body>
 </html>

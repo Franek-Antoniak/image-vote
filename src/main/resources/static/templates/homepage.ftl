@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="Poll Site" />
   <meta name="author" content="Franek Antoniak" />
-  <title>Poll Site - Home page</title>
+  <title>Home page</title>
   <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="/assets/homepage.ico" />
   <!-- Bootstrap icons-->
@@ -27,6 +27,7 @@
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
         <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
         <li class="nav-item dropdown">
       </ul>

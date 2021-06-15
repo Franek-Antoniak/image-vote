@@ -1,5 +1,6 @@
 package com.staszic.poll.user;
 
+import com.staszic.poll.cleaner.CleanerService;
 import com.staszic.poll.error.DataBaseSelectException;
 import com.staszic.poll.freemarker.FreeMarkerService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class UserController {
     private final FreeMarkerService freeMarkerService;
     private final UserService userService;
     private final CurrentUserService currentUserService;
+    private final CleanerService cleanerService;
 
     @GetMapping("/")
     public ResponseEntity<String> homepage() throws Exception {
@@ -44,6 +46,7 @@ public class UserController {
         try {
             userService.voteByUser(author);
         } catch (AccessDeniedException e) {
+            // sprawdz co to robi
             return ResponseEntity.
                     status(HttpStatus.FORBIDDEN)
                     .body("Too many votes!");
@@ -53,4 +56,16 @@ public class UserController {
         return ResponseEntity.ok("");
     }
 
+    @GetMapping("/admin/settings")
+    public ResponseEntity<String> settings() {
+        return userService.getSettings();
+    }
+
+    @PatchMapping("/admin/delete/data")
+    public ResponseEntity<String> deleteAllData() {
+        cleanerService.clearDataBase();
+        return ResponseEntity.
+                status(HttpStatus.OK)
+                .build();
+    }
 }
