@@ -1,50 +1,50 @@
 plugins {
-	id 'org.springframework.boot' version '2.5.1'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+    id 'org.springframework.boot' version '2.5.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
 }
 
-group = 'com.staszic'
+group = 'com.highschool'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 sourceSets.main.resources.srcDirs = ["src/main/resources"]
 
 dependencies {
-	// FREEMARKER
-	implementation 'org.springframework.boot:spring-boot-starter-freemarker'
-	// ACTUATORS
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	// SPRING BOOT with WEB SPRINGBOOT
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation "org.springframework.boot:spring-boot-starter-web"
-	// JPA AND H2
-	runtimeOnly 'com.h2database:h2'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	// SPRING BOOT TEST
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// LOMBOK - ANNOTATIONS
-	testCompileOnly 'org.projectlombok:lombok:1.18.20'
-	compileOnly 'org.projectlombok:lombok:1.18.20'
-	annotationProcessor 'org.projectlombok:lombok:1.18.20'
-	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
-	// OBJECT MAPPER
-	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-	// ANNOTATION PROCESSOR
-	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-	// SECURITY
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.security:spring-security-test'
+    // FREEMARKER
+    implementation 'org.springframework.boot:spring-boot-starter-freemarker'
+    // ACTUATORS
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    // SPRING BOOT with WEB SPRINGBOOT
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    // JPA AND H2
+    runtimeOnly 'com.h2database:h2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // SPRING BOOT TEST
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // LOMBOK - ANNOTATIONS
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    // OBJECT MAPPER
+    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+    // ANNOTATION PROCESSOR
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+    // SECURITY
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.security:spring-security-test'
+    // GOOGLE OAUTH2
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 springBoot {
-	mainClass = 'com.staszic.poll.PollApplication'
+    mainClass = 'com.staszic.poll.ImageVoteApplication'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

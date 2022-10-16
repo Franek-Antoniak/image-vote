@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Error 403" />
-    <meta name="author" content="Franek Antoniak" />
-    <meta name="description" content="Error Page" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="Error 403"/>
+    <meta name="author" content="Franek Antoniak"/>
+    <meta name="description" content="Error Page"/>
     <meta charset="UTF-8">
     <title>Error 403 - Only For Admin</title>
     <link href="/css/error403.css" rel="stylesheet"/>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/assets/homepage.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/homepage.ico"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/homepage.css" rel="stylesheet" />
+    <link href="/css/homepage.css" rel="stylesheet"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5PGH8YYN7C"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-5PGH8YYN7C');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-5PGH8YYN7C');
     </script>
 </head>
 <body>
 <style>
     a, a:hover, a:visited, a:active {
-      color: inherit;
-      text-decoration: none;
-     }
-    .logout-right {
-       position:fixed;
-       right:10px;
-       top:5px;
+        color: inherit;
+        text-decoration: none;
     }
+
+    .logout-right {
+        position: fixed;
+        right: 10px;
+        top: 5px;
+    }
+
     .logout-left {
-       position:fixed;
-       left:10px;
-       top:5px;
+        position: fixed;
+        left: 10px;
+        top: 5px;
     }
 </style>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light" bg-light style="background-color: #f3f2ee;">
-  <div class="container px-4 px-lg-5">
-    <a class="navbar-brand">Głosowanie</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/creator">Kreator</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
-        <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak" target="_blank">Github</a></li>
-        <li class="nav-item dropdown">
-      </ul>
-      <a href="/perform_logout" class="btn btn-outline-dark logout">Wyloguj się</a>
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand">Głosowanie</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/">Głosuj</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/results">Wyniki</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/user/creator">Kreator</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="/admin/settings">Ustawienia</a></li>
+                <li class="nav-item"><a class="nav-link" aria-current="page" href="https://github.com/Franek-Antoniak"
+                                        target="_blank">Github</a></li>
+                <li class="nav-item dropdown">
+            </ul>
+            <a href="/perform_logout" class="btn btn-outline-dark logout">Wyloguj się</a>
+        </div>
     </div>
-  </div>
 </nav>
 <a href="/">
     <div class='hover'>
