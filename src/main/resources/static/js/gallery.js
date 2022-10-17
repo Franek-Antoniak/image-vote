@@ -1,11 +1,12 @@
 function vote(uniqueId) {
     $.ajax({
         type: "PATCH",
-        url: "/image/vote/" + uniqueId,
+        url: "/user/image/vote/" + uniqueId,
         error: function (xhr, status, err) {
             console.error(xhr, status, err.toString());
         }.bind(this)
     });
+    delayUrlLoad('/', 1000);
 }
 
 function delayUrlLoad(url, mils) {
@@ -17,11 +18,12 @@ function delayUrlLoad(url, mils) {
 function deleteImage(uniqueId) {
     $.ajax({
         type: 'DELETE',
-        url: '/user/delete/image/' + uniqueId,
+        url: '/user/image/delete/' + uniqueId,
         error: function (xhr, status, err) {
             console.error(xhr, status, err.toString());
         }.bind(this)
     });
+    delayUrlLoad('/', 1000);
 }
 
 function renderModal(imageId) {

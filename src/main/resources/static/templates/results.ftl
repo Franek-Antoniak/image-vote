@@ -12,6 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/homepage.css" rel="stylesheet"/>
+    <!-- Modal CSS-->
+    <link href="/css/modal.css" rel="stylesheet"/>
     <!-- Log out scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -63,31 +65,37 @@
 <!-- Section-->
 <section class="py-5" style="min-height: 285px;">
     <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
             <!-- box-start -->
             <#list imageList as image>
                 <div class="col mb-5">
-                    <div class="card h-100">
-                        <a href="${image.path}">
-                            <!-- Click badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Click
-                            </div>
-                            <!-- Product image-->
-                            <img class="card-img-top" src="${image.path}" alt="..."/>
-                            <a/>
-                            <!-- Product details-->
-                            <div class="card-body p-4"></div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark">Liczba
-                                        głosów: ${image.votes}</a></div>
-                            </div>
+                    <div class="card h-70">
+                        <!-- Click badge-->
+                        <button class="badge btn-light text-dark position-absolute"
+                                style="top: 0.5rem; right: 0.5rem"
+                                id="view-${image.id}"
+                                onClick='renderModal("${image.id}")'>View
+                        </button>
+                        <!-- Product image-->
+                        <img class="card-img-top img-to-modal" src="/images/${image.fileName}" alt="..." id="${image
+                        .id}"/>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-4 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark">Liczba
+                                    głosów: ${image.votes}</a></div>
+                        </div>
                     </div>
                 </div>
             </#list>
             <!-- box-end -->
         </div>
+    </div>
+    <!-- The Modal -->
+    <div id="modal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
     </div>
 </section>
 <!-- Footer-->
@@ -96,5 +104,7 @@
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="/js/gallery.js"></script>
 </body>
 </html>

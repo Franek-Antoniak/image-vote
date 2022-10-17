@@ -18,13 +18,16 @@ public class CleanerService {
 	public void clearDataBase() {
 		userRepository.deleteAll();
 		imageRepository.deleteAll();
-		File directory = new File("images");
-
+		File directory = new File("src/main/resources/images");
 		File[] files = directory.listFiles();
 		if (files == null) {
 			return;
 		}
 		for (File file : files) {
+			if (file.getName()
+			        .equals(".gitkeep")) {
+				continue;
+			}
 			if (!file.delete()) {
 				System.out.println("Failed to delete " + file.getName());
 			}

@@ -20,15 +20,8 @@ public class UserService {
 
 	private final WebUserService webUserService;
 	private final UserRepository userRepository;
-	private final Supplier<Exception> DBExceptionSup = () -> new DataBaseSelectException(
-			"After all operations there is null in Select");
 	private final ImageRepository imageRepository;
 	private final FreeMarkerService freeMarkerService;
-
-	public void addAuthorshipAndCreate() {
-		User user = getUserOrElseCreate();
-		userRepository.save(user);
-	}
 
 	public User getUserOrElseCreate() {
 		Optional<User> optionalUser = userRepository.findByName(webUserService.getUserNameId());
@@ -53,7 +46,7 @@ public class UserService {
 	public ResponseEntity<String> getHomePage() {
 		User user = getUserOrElseCreate();
 		List<Image> imageList = imageRepository.findAll();
-		if (user.getVotes() == 0) {
+		if (user.getVotes().size() == 3) {
 			return freeMarkerService.getResponseEntityHTML("error-403.ftl", HttpStatus.FORBIDDEN);
 		}
 		return freeMarkerService.getResponseEntityHTML("homepage.ftl", new String[]{"user", "imageList"},

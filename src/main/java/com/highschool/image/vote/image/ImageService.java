@@ -11,20 +11,16 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class ImageService {
-
-	private static final String imagesDirName = "images";
 	private final UserService userService;
 	private final ImageRepository imageRepository;
 	private final FreeMarkerService freeMarkerService;
@@ -32,16 +28,21 @@ public class ImageService {
 	public void saveImage(@NotNull MultipartFile imageFile) throws IOException {
 		byte[] imageBytes = imageFile.getBytes();
 		String newFileName = randomString().concat(".png");
-		Path folderPath = Paths.get(imagesDirName);
+		Path folderPath = Paths.get("images");
 		if (!Files.exists(folderPath)) {
 			Files.createDirectory(folderPath);
 		}
 		Path filePath = Paths.get(folderPath + "/" + newFileName);
 		Files.write(filePath, imageBytes);
-		Image image = new Image();
-		image.setAuthor(userService.getUserOrElseCreate());
-		image.setPath("/" + filePath);
+		User user = userService.getUserOrElseCreate();
+		Image image = Image.builder()
+		                   .author(user)
+		                   .fileName(newFileName)
+		                   .build();
+		user.getVotes()
+		    .add(image);
 		imageRepository.save(image);
+		userService.saveUser(user);
 	}
 
 	public String randomString() {
@@ -68,22 +69,43 @@ public class ImageService {
 		}
 		Image image = optionalImage.get();
 		User user = userService.getUserOrElseCreate();
-		if (!user.canVote()) {
+		if (user.getVotes().size() == 3) {
 			throw new IllegalCallException("Too many votes!");
 		}
-		if (user.getHashSet()
-		        .contains(image.getUniqueId())) {
+		if (user.getVotes()
+		        .contains(image)) {
 			throw new IllegalCallException("You already voted for this image!");
 		}
 		if (image.getAuthor()
-		             .equals(user)) {
+		         .equals(user)) {
 			throw new IllegalCallException("You can't vote for your own image!");
 		}
 		image.setVotes(image.getVotes() + 1);
-		user.setVotes(user.getVotes() - 1);
-		user.getHashSet()
-		    .add(image.getUniqueId());
+		image.getVoters()
+		     .add(user);
+		user.getVotes()
+		    .add(image);
 		userService.saveUser(user);
 		imageRepository.save(image);
 	}
+
+	public void deleteImage(String uniqueId) {
+		User user = userService.getUserOrElseCreate();
+		Image image = imageRepository.findByAuthorAndUniqueId(user, UUID.fromString(uniqueId))
+		                             .orElseThrow(() -> new AccessDeniedException(
+				                             "You don't have permission to delete this image!"));
+		user.getVotes()
+		    .remove(image);
+		userService.saveUser(user);
+		imageRepository.delete(image);
+		File[] files = new File("/images").listFiles();
+		if (files != null) {
+			Arrays.stream(files)
+			      .filter(file -> file.getName()
+			                          .equals(image.getFileName()))
+			      .findFirst()
+			      .ifPresent(File::delete);
+		}
+	}
 }
+

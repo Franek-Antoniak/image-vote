@@ -1,6 +1,6 @@
-const loadFile = function (event) {
+const loadFile = function (id) {
     const output = document.getElementById('output');
-    output.src = URL.createObjectURL(event.target.files[0]);
+    output.src = URL.createObjectURL(document.getElementById(id).files[0]);
     output.onload = function () {
         URL.revokeObjectURL(output.src) // free memory
     }
@@ -29,7 +29,7 @@ function processUpload() {
     $
         .ajax({
             dataType: 'json',
-            url: "/user/uploadImage",
+            url: "/user/image/upload",
             data: oMyForm,
             type: "POST",
             enctype: 'multipart/form-data',

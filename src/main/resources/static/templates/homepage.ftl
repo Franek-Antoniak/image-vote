@@ -58,18 +58,18 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Oddaj swój głos na najlepsze obrazy</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Ilość głosów do oddania: ${user.votes}</p>
+            <p class="lead fw-normal text-white-50 mb-0">Ilość głosów do oddania: ${3 - user.votes?size}</p>
         </div>
     </div>
 </header>
 <!-- Section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
             <!-- box-start -->
             <#list imageList as image>
                 <div class="col mb-5">
-                    <div class="card h-100">
+                    <div class="card h-70">
                         <!-- Click badge-->
                         <button class="badge btn-light text-dark position-absolute"
                                 style="top: 0.5rem; right: 0.5rem"
@@ -77,34 +77,35 @@
                                 onClick='renderModal("${image.id}")'>View
                         </button>
                         <!-- Product image-->
-                        <img class="card-img-top img-to-modal" src="${image.path}" alt="..." id="${image.id}"/>
+                        <img class="card-img-top img-to-modal" src="/images/${image.fileName}" alt="..." id="${image
+                        .id}"/>
+                        <#if image.author.equals(user)>
                         <!-- Delete badge-->
                         <button class="badge btn-danger text-white position-absolute"
                                 style="top: 0.5rem; left: 0.5rem"
-                                onclick="deleteImage('${image.uniqueId}');delayUrlLoad('/', 1000);">Delete
+                                onclick="deleteImage('${image.uniqueId}');">Delete
                         </button>
-                        <!-- Product details-->
-                        <div class="card-body p-3"></div>
+                        </#if>
                         <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="card-footer p-4 pt-4 border-top-0 bg-transparent">
                             <div class="text-center">
                                 <button class="btn btn-outline-dark mt-auto"
-                                        onclick="vote('${image.uniqueId}');delayUrlLoad('/', 1000);">Zagłosuj
+                                        onclick="vote('${image.uniqueId}');">Zagłosuj
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </#list>
-            <!-- The Modal -->
-            <div id="modal" class="modal">
-                <!-- The Close Button -->
-                <span class="close">&times;</span>
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content" id="img01">
-            </div>
             <!-- box-end -->
         </div>
+    </div>
+    <!-- The Modal -->
+    <div id="modal" class="modal">
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
     </div>
 </section>
 <!-- Footer-->
@@ -115,5 +116,5 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/js/homepage.js"></script>
+<script src="/js/gallery.js"></script>
 </html>
