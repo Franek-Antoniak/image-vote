@@ -39,7 +39,7 @@ public class ImageService {
 		                   .author(user)
 		                   .fileName(newFileName)
 		                   .build();
-		user.getVotes()
+		user.getUploadedImages()
 		    .add(image);
 		imageRepository.save(image);
 		userService.saveUser(user);
@@ -69,7 +69,8 @@ public class ImageService {
 		}
 		Image image = optionalImage.get();
 		User user = userService.getUserOrElseCreate();
-		if (user.getVotes().size() == 3) {
+		if (user.getVotes()
+		        .size() == 3) {
 			throw new IllegalCallException("Too many votes!");
 		}
 		if (user.getVotes()
@@ -94,11 +95,11 @@ public class ImageService {
 		Image image = imageRepository.findByAuthorAndUniqueId(user, UUID.fromString(uniqueId))
 		                             .orElseThrow(() -> new AccessDeniedException(
 				                             "You don't have permission to delete this image!"));
-		user.getVotes()
+		user.getUploadedImages()
 		    .remove(image);
 		userService.saveUser(user);
 		imageRepository.delete(image);
-		File[] files = new File("/images").listFiles();
+		File[] files = Paths.get("images").toFile().listFiles();
 		if (files != null) {
 			Arrays.stream(files)
 			      .filter(file -> file.getName()
