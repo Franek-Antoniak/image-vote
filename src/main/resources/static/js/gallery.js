@@ -9,6 +9,17 @@ function vote(uniqueId) {
     delayUrlLoad('/', 1000);
 }
 
+function unvote(uniqueId) {
+    $.ajax({
+        type: "delete",
+        url: "/user/image/unvote/" + uniqueId,
+        error: function (xhr, status, err) {
+            console.error(xhr, status, err.toString());
+        }.bind(this)
+    });
+    delayUrlLoad('/', 1000);
+}
+
 function delayUrlLoad(url, mils) {
     setTimeout(function () {
         window.location.href = url;

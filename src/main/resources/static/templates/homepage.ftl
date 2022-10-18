@@ -80,19 +80,27 @@
                         <img class="card-img-top img-to-modal" src="/images/${image.fileName}" alt="..." id="${image
                         .id}"/>
                         <#if image.author.equals(user)>
-                        <!-- Delete badge-->
-                        <button class="badge btn-danger text-white position-absolute"
-                                style="top: 0.5rem; left: 0.5rem"
-                                onclick="deleteImage('${image.uniqueId}');">Delete
-                        </button>
+                            <!-- Delete badge-->
+                            <button class="badge btn-danger text-white position-absolute"
+                                    style="top: 0.5rem; left: 0.5rem"
+                                    onclick="deleteImage('${image.uniqueId}');">Delete
+                            </button>
                         </#if>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-4 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <button class="btn btn-outline-dark mt-auto"
-                                        onclick="vote('${image.uniqueId}');">Zagłosuj
-                                </button>
-                            </div>
+                            <#if !image.voters?seq_contains(user)>
+                                <div class="text-center">
+                                    <button class="btn btn-outline-dark mt-auto"
+                                            onclick="vote('${image.uniqueId}')">Zagłosuj
+                                    </button>
+                                </div>
+                            <#else>
+                                <div class="text-center">
+                                    <button class="btn btn-outline-dark mt-auto"
+                                            onclick="unvote('${image.uniqueId}')">Odbierz głos
+                                    </button>
+                                </div>
+                            </#if>
                         </div>
                     </div>
                 </div>

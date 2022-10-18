@@ -7,9 +7,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Getter
@@ -19,14 +23,16 @@ import java.util.*;
 @Entity
 @Table(name = "Users")
 public class User {
-	private final UUID uniqueId = UUID.randomUUID();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name;
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Type(type = "uuid-char")
+	private UUID uniqueId = UUID.randomUUID();
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "User_Votes", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "image_id"))
 	@ToString.Exclude
 	private List<Image> votes = new ArrayList<>();
+	private String name;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "author")
 	@ToString.Exclude
 	private List<Image> uploadedImages = new ArrayList<>();

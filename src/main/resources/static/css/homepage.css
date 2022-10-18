@@ -11374,6 +11374,7 @@ textarea.form-control-lg {
         font-size: 1.5rem !important;
     }
 }
+
 @media print {
     .d-print-inline {
         display: inline !important;

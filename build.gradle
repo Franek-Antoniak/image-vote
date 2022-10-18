@@ -6,7 +6,8 @@ plugins {
 
 group = 'com.highschool'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '15'
+targetCompatibility = '15'
 
 repositories {
     mavenCentral()
@@ -23,7 +24,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation "org.springframework.boot:spring-boot-starter-web"
     // JPA AND H2
-    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.h2database:h2:2.1.214'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // SPRING BOOT TEST
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -32,7 +33,6 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     // OBJECT MAPPER
     implementation 'org.mapstruct:mapstruct:1.5.2.Final'
-    // ANNOTATION PROCESSOR
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
     // SECURITY
     implementation 'org.springframework.boot:spring-boot-starter-security'

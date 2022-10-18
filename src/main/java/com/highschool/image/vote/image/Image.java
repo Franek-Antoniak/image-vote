@@ -4,9 +4,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.highschool.image.vote.user.User;
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 @Builder
@@ -21,12 +25,11 @@ public class Image {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Type(type = "uuid-char")
 	@Builder.Default
 	private UUID uniqueId = UUID.randomUUID();
-	@Builder.Default
-	private Integer votes = 0;
 	private String fileName;
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "votes")
+	@ManyToMany(mappedBy = "votes", fetch = FetchType.EAGER)
 	@ToString.Exclude
 	private List<User> voters = new ArrayList<>();
 	@ManyToOne(optional = false)

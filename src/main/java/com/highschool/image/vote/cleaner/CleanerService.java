@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Service
@@ -20,7 +19,9 @@ public class CleanerService {
 	public void clearDataBase() {
 		userRepository.deleteAll();
 		imageRepository.deleteAll();
-		File[] files = Paths.get("images").toFile().listFiles();
+		File[] files = Paths.get("images")
+		                    .toFile()
+		                    .listFiles();
 		if (files == null) {
 			return;
 		}

@@ -58,7 +58,7 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Wyniki głosowania</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Dostęp do strony jest możliwy tylko dla administratora</p>
+            <#--            <p class="lead fw-normal text-white-50 mb-0">Dostęp do strony jest możliwy tylko dla administratora</p>-->
         </div>
     </div>
 </header>
@@ -82,7 +82,7 @@
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-4 border-top-0 bg-transparent">
                             <div class="text-center"><a class="btn btn-outline-dark">Liczba
-                                    głosów: ${image.votes}</a></div>
+                                    głosów: ${image.voters?size}</a></div>
                         </div>
                     </div>
                 </div>

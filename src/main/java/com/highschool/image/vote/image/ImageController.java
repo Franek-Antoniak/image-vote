@@ -2,7 +2,6 @@ package com.highschool.image.vote.image;
 
 
 import com.highschool.image.vote.error.IllegalCallException;
-import com.highschool.image.vote.user.UserService;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,6 @@ import java.io.IOException;
 public class ImageController {
 
 	private final ImageService imageService;
-	private final UserService userService;
 
 	@PostMapping("/user/image/upload")
 	public ResponseEntity<String> uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
@@ -62,5 +60,4 @@ public class ImageController {
 	public ResponseEntity<String> results() {
 		return imageService.getAllImagesWithResult();
 	}
-
 }

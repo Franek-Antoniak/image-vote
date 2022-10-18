@@ -58,7 +58,10 @@ public class ImageService {
 	}
 
 	public ResponseEntity<String> getAllImagesWithResult() {
-		List<Image> imageList = imageRepository.findAllByOrderByVotesDesc();
+		List<Image> imageList = imageRepository.findAll();
+		// - for ascending order
+		imageList.sort(Comparator.comparing(x -> -x.getVoters()
+		                                           .size()));
 		return freeMarkerService.getResponseEntityHTML("results.ftl", "imageList", imageList);
 	}
 
@@ -81,11 +84,10 @@ public class ImageService {
 		         .equals(user)) {
 			throw new IllegalCallException("You can't vote for your own image!");
 		}
-		image.setVotes(image.getVotes() + 1);
-		image.getVoters()
-		     .add(user);
 		user.getVotes()
 		    .add(image);
+		image.getVoters()
+		     .add(user);
 		userService.saveUser(user);
 		imageRepository.save(image);
 	}
@@ -97,9 +99,14 @@ public class ImageService {
 				                             "You don't have permission to delete this image!"));
 		user.getUploadedImages()
 		    .remove(image);
+		image.getVoters()
+		     .forEach(x -> x.getVotes()
+		                    .remove(image));
 		userService.saveUser(user);
 		imageRepository.delete(image);
-		File[] files = Paths.get("images").toFile().listFiles();
+		File[] files = Paths.get("images")
+		                    .toFile()
+		                    .listFiles();
 		if (files != null) {
 			Arrays.stream(files)
 			      .filter(file -> file.getName()
@@ -107,6 +114,22 @@ public class ImageService {
 			      .findFirst()
 			      .ifPresent(File::delete);
 		}
+	}
+
+	public void unVote(String uniqueId) throws IllegalCallException {
+		User user = userService.getUserOrElseCreate();
+		Image image = imageRepository.findByUniqueId(UUID.fromString(uniqueId))
+		                             .orElseThrow(() -> new IllegalCallException("Image not found!"));
+		if (!user.getVotes()
+		         .contains(image)) {
+			throw new IllegalCallException("You didn't vote for this image!");
+		}
+		user.getVotes()
+		    .remove(image);
+		image.getVoters()
+		     .remove(user);
+		userService.saveUser(user);
+		imageRepository.save(image);
 	}
 }
 
