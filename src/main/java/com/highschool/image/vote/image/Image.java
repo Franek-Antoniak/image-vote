@@ -31,6 +31,7 @@ public class Image {
 	private String fileName;
 	@ManyToMany(mappedBy = "votes", fetch = FetchType.EAGER)
 	@ToString.Exclude
+	@Builder.Default
 	private List<User> voters = new ArrayList<>();
 	@ManyToOne(optional = false)
 	private User author;
