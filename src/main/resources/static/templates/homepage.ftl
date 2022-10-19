@@ -100,7 +100,7 @@
                             <#else>
                                 <div class="text-center">
                                     <button class="btn btn-outline-dark mt-auto"
-                                            onclick="unvote('${image.uniqueId}')">Odbierz głos
+                                            onclick="un_vote('${image.uniqueId}')">Odbierz głos
                                     </button>
                                 </div>
                             </#if>

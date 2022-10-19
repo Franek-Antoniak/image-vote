@@ -60,7 +60,7 @@ public class ImageController {
 	}
 
 	@PatchMapping("/user/image/unvote/{uniqueId}")
-	public ResponseEntity<String> unVote(@PathVariable String uniqueId) throws Exception {
+	public ResponseEntity<String> unVote(@PathVariable String uniqueId) {
 		try {
 			imageService.unVote(uniqueId);
 		} catch (IllegalCallException e) {

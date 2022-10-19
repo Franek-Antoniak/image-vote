@@ -1,40 +1,31 @@
 function vote(uniqueId) {
     $.ajax({
-        type: "PATCH",
-        url: "/user/image/vote/" + uniqueId,
-        error: function (xhr, status, err) {
-            console.error(xhr, status, err.toString());
-        }.bind(this)
+        type: "PATCH", url: "/user/image/vote/" + uniqueId, success: function (data) {
+            window.location.href = "/";
+        }, error: function (data) {
+            console.log(data);
+        }
     });
-    delayUrlLoad('/', 1000);
 }
 
-function unvote(uniqueId) {
+function un_vote(uniqueId) {
     $.ajax({
-        type: "delete",
-        url: "/user/image/unvote/" + uniqueId,
-        error: function (xhr, status, err) {
-            console.error(xhr, status, err.toString());
-        }.bind(this)
+        type: "PATCH", url: "/user/image/unvote/" + uniqueId, success: function () {
+            window.location.href = "/";
+        }, error: function (data) {
+            console.log(data);
+        }
     });
-    delayUrlLoad('/', 1000);
-}
-
-function delayUrlLoad(url, mils) {
-    setTimeout(function () {
-        window.location.href = url;
-    }, mils)
 }
 
 function deleteImage(uniqueId) {
     $.ajax({
-        type: 'DELETE',
-        url: '/user/image/delete/' + uniqueId,
-        error: function (xhr, status, err) {
-            console.error(xhr, status, err.toString());
-        }.bind(this)
+        type: "DELETE", url: "/user/image/delete/" + uniqueId, success: function () {
+            window.location.href = "/";
+        }, error: function (data) {
+            console.log(data);
+        }
     });
-    delayUrlLoad('/', 1000);
 }
 
 function renderModal(imageId) {
@@ -53,18 +44,12 @@ function renderModal(imageId) {
     }
 }
 
-document.addEventListener(
-    "click",
-    function (event) {
-        // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
-        if (
-            event.target.closest(".modal")
-        ) {
-            closeModal()
-        }
-    },
-    false
-)
+document.addEventListener("click", function (event) {
+    // If user either clicks X button OR clicks outside the modal window, then close modal by calling closeModal()
+    if (event.target.closest(".modal")) {
+        closeModal()
+    }
+}, false)
 
 function closeModal() {
     document.querySelector(".modal").style.display = "none"

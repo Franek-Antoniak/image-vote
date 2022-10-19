@@ -7,19 +7,14 @@ const loadFile = function (id) {
 };
 
 let files = [];
-$(document).on(
-    "change",
-    "#imageLoader",
-    function (event) {
-        files = event.target.files;
-    })
+$(document).on("change", "#imageLoader", function (event) {
+    files = event.target.files;
+})
 
-$(document).on(
-    "click",
-    "#imageSubmit",
-    function () {
-        processUpload();
-    })
+$(document).on("click", "#imageSubmit", function () {
+    document.getElementById("imageSubmit").disabled = true;
+    processUpload();
+})
 
 function processUpload() {
     const oMyForm = new FormData();
@@ -31,36 +26,22 @@ function processUpload() {
         processData: false,
         contentType: false,
         enctype: 'multipart/form-data',
-        success: function (data) {
-            console.log(data);
+        success: function () {
             window.location.href = "/";
+        },
+        error: function (data) {
+            document.getElementById("imageSubmit").disabled = false;
+            console.log(data);
         }
     });
-
-/*    $.ajax({
-        dataType: 'json',
-        url: "/user/image/upload",
-        data: oMyForm,
-        type: "POST",
-        enctype: 'multipart/form-data',
-        error: function (xhr, status, err) {
-            console.error(xhr, status, err.toString());
-        }
-    });*/
-}
-
-function delayUrlLoad(url, mils) {
-    setTimeout(function () {
-        window.location.href = url;
-    }, mils)
 }
 
 function deleteAllData() {
     $.ajax({
-        type: "PATCH",
-        url: "/admin/delete/data",
-        error: function (xhr, status, err) {
-            console.error(xhr, status, err.toString());
-        }.bind(this)
+        type: "DELETE", url: "/admin/delete/data", success: function () {
+            window.location.href = "/";
+        }, error: function (data) {
+            console.log(data);
+        }
     });
 }

@@ -3,7 +3,7 @@ package com.highschool.image.vote.cleaner;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CleanerController {
 	private final CleanerService cleanerService;
 
-	@PatchMapping("/admin/delete/data")
+	@DeleteMapping("/admin/delete/data")
 	public ResponseEntity<String> deleteAllData() {
 		cleanerService.clearDataBase();
 		return ResponseEntity.status(HttpStatus.OK)
