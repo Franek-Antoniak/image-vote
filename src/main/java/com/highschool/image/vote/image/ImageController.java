@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -16,7 +17,6 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 public class ImageController {
-
 	private final ImageService imageService;
 
 	@PostMapping("/user/image/upload")
@@ -25,12 +25,14 @@ public class ImageController {
 			imageService.saveImage(imageFile);
 		} catch (NullPointerException e) {
 			System.out.println("MultipartFile is null" + e.getMessage());
+			return new ResponseEntity<>("MultipartFile is null", HttpStatus.BAD_REQUEST);
 		} catch (IOException e) {
 			System.out.println("No such path/file" + e.getMessage());
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+			                     .build();
 		}
-		return ResponseEntity.ok("");
+		return ResponseEntity.ok()
+		                     .build();
 	}
 
 	@Transactional
@@ -41,7 +43,8 @@ public class ImageController {
 		} catch (AccessDeniedException e) {
 			throw new AccessDeniedException(e.getMessage());
 		}
-		return ResponseEntity.ok("");
+		return ResponseEntity.ok()
+		                     .build();
 	}
 
 
@@ -64,11 +67,19 @@ public class ImageController {
 			return ResponseEntity.status(HttpStatus.CONFLICT)
 			                     .body(e.getMessage());
 		}
-		return ResponseEntity.ok("");
+		return ResponseEntity.ok()
+		                     .build();
 	}
 
 	@GetMapping("/admin/results")
 	public ResponseEntity<String> results() {
 		return imageService.getAllImagesWithResult();
+	}
+
+	@ExceptionHandler(value = MultipartException.class)
+	public ResponseEntity<String> handleFileUploadingError(Exception exception) {
+		System.err.println("File uploading error: " + exception.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+		                     .build();
 	}
 }
