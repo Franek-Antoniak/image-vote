@@ -10,7 +10,6 @@ import java.util.Locale;
 
 @org.springframework.context.annotation.Configuration
 public class FreeMakerConfigBean {
-
 	@Bean
 	public Configuration getCfg() {
 

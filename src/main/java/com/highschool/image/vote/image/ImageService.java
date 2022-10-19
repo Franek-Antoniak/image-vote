@@ -6,6 +6,7 @@ import com.highschool.image.vote.user.User;
 import com.highschool.image.vote.user.UserService;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,14 +29,17 @@ public class ImageService {
 	private final FreeMarkerService freeMarkerService;
 
 	public void saveImage(@NotNull MultipartFile imageFile) throws IOException {
-		byte[] imageBytes = imageFile.getBytes();
+		InputStream input = imageFile.getInputStream();
 		String newFileName = randomString().concat(".png");
 		Path folderPath = Paths.get("images");
 		if (!Files.exists(folderPath)) {
 			Files.createDirectory(folderPath);
 		}
 		Path filePath = Paths.get(folderPath + "/" + newFileName);
-		Files.write(filePath, imageBytes);
+		OutputStream output = Files.newOutputStream(filePath);
+		IOUtils.copy(input, output);
+		output.close();
+		input.close();
 		User user = userService.getUserOrElseCreate();
 		Image image = Image.builder()
 		                   .author(user)

@@ -33,6 +33,7 @@ function processUpload() {
             data: oMyForm,
             type: "POST",
             enctype: 'multipart/form-data',
+            mimeType: 'multipart/form-data',
             processData: false,
             contentType: false,
         });
