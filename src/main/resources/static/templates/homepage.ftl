@@ -88,7 +88,10 @@
                         </#if>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-4 border-top-0 bg-transparent">
-                            <#if !image.voters?seq_contains(user)>
+                            <#if image.author.equals(user)>
+                                <div class="text-center"><a class="btn btn-outline-dark">Liczba
+                                        głosów: ${image.voters?size}</a></div>
+                            <#elseif !image.voters?seq_contains(user)>
                                 <div class="text-center">
                                     <button class="btn btn-outline-dark mt-auto"
                                             onclick="vote('${image.uniqueId}')">Zagłosuj
