@@ -56,6 +56,17 @@ public class ImageController {
 		return ResponseEntity.ok("");
 	}
 
+	@PatchMapping("/user/image/unvote/{uniqueId}")
+	public ResponseEntity<String> unVote(@PathVariable String uniqueId) throws Exception {
+		try {
+			imageService.unVote(uniqueId);
+		} catch (IllegalCallException e) {
+			return ResponseEntity.status(HttpStatus.CONFLICT)
+			                     .body(e.getMessage());
+		}
+		return ResponseEntity.ok("");
+	}
+
 	@GetMapping("/admin/results")
 	public ResponseEntity<String> results() {
 		return imageService.getAllImagesWithResult();
