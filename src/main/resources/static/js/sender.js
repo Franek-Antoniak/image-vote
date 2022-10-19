@@ -35,13 +35,14 @@ function processUpload() {
             enctype: 'multipart/form-data',
             processData: false,
             contentType: false,
-            success: function (result) {
-                //...;
-            },
-            error: function (result) {
-                //...;
-            }
         });
+    delayUrlLoad('/', 1000);
+}
+
+function delayUrlLoad(url, mils) {
+    setTimeout(function () {
+        window.location.href = url;
+    }, mils)
 }
 
 function deleteAllData() {
