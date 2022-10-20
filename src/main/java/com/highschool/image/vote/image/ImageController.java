@@ -13,26 +13,32 @@ import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class ImageController {
 	private final ImageService imageService;
 
-	@PostMapping("/user/image/upload")
-	public ResponseEntity<String> uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
+	@PostMapping("/user/images/upload")
+	public ResponseEntity<String> uploadImage(@RequestParam("imagesFiles") List<MultipartFile> imagesFiles) {
+		ResponseEntity<String> responseEntity = ResponseEntity.status(HttpStatus.CREATED)
+		                                                      .body("Images uploaded successfully");
 		try {
-			imageService.uploadImage(imageFile);
+			for (MultipartFile imagesFile : imagesFiles) {
+				try {
+					imageService.uploadImage(imagesFile);
+				} catch (IOException e) {
+					System.err.println("Error while uploading image: " + e.getMessage());
+					responseEntity = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					                               .body("Internal server error. Some files were not uploaded");
+				}
+			}
 		} catch (NullPointerException e) {
 			System.out.println("MultipartFile is null" + e.getMessage());
 			return new ResponseEntity<>("MultipartFile is null", HttpStatus.BAD_REQUEST);
-		} catch (IOException e) {
-			System.out.println("No such path/file" + e.getMessage());
-			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-			                     .build();
 		}
-		return ResponseEntity.ok()
-		                     .build();
+		return responseEntity;
 	}
 
 	@Transactional

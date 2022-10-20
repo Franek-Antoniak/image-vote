@@ -7,7 +7,6 @@ import com.highschool.image.vote.user.User;
 import com.highschool.image.vote.user.UserService;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
@@ -15,10 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
@@ -50,6 +45,7 @@ public class ImageService {
 		imageRepository.save(image);
 		userService.saveUser(user);
 	}
+
 	public ResponseEntity<String> getAllImagesWithResult() {
 		List<Image> imageList = imageRepository.findAll();
 		// - for descending order

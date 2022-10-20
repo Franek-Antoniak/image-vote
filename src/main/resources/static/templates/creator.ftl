@@ -65,8 +65,7 @@
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
             <div class="col mb-5">
                 <div class="card h-100">
-                    <input class="form-control" name="imageFile" id="imageLoader" type="file" accept="image/*"
-                           onchange="loadFile('imageLoader')">
+                    <input class="form-control" name="imagesFiles" id="imagesLoader" type="file" accept="image/*" multiple>
                     <!-- Product image-->
                     <img id="output" class="card-img-top"
                          src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" alt="..."/>
@@ -78,10 +77,14 @@
                         </div>
                     </div>
                     <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
                         <div class="text-center">
-                            <input class="btn btn-outline-dark mt-auto" type="button" id="imageSubmit"
+                            <input class="btn btn-outline-dark mt-auto" type="button" id="submitImages"
                                    value="Wyślij Obraz"/>
+                            <button class="btn btn-outline-dark mt-auto" type="button" id="nextImage"
+                                    onclick="previewNextImage()" disabled>
+                                Zobacz następny
+                            </button>
                         </div>
                     </div>
                 </div>
