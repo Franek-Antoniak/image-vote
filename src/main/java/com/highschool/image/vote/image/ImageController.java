@@ -22,7 +22,7 @@ public class ImageController {
 	@PostMapping("/user/image/upload")
 	public ResponseEntity<String> uploadImage(@RequestParam("imageFile") MultipartFile imageFile) {
 		try {
-			imageService.saveImage(imageFile);
+			imageService.uploadImage(imageFile);
 		} catch (NullPointerException e) {
 			System.out.println("MultipartFile is null" + e.getMessage());
 			return new ResponseEntity<>("MultipartFile is null", HttpStatus.BAD_REQUEST);

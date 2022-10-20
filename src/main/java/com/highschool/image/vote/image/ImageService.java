@@ -2,6 +2,7 @@ package com.highschool.image.vote.image;
 
 import com.highschool.image.vote.error.IllegalCallException;
 import com.highschool.image.vote.freemarker.FreeMarkerService;
+import com.highschool.image.vote.image.utils.ImageSaverUtils;
 import com.highschool.image.vote.user.User;
 import com.highschool.image.vote.user.UserService;
 import com.sun.istack.NotNull;
@@ -27,19 +28,18 @@ public class ImageService {
 	private final UserService userService;
 	private final ImageRepository imageRepository;
 	private final FreeMarkerService freeMarkerService;
+	private final ImageSaverUtils imageSaverUtils;
 
-	public void saveImage(@NotNull MultipartFile imageFile) throws IOException {
-		InputStream input = imageFile.getInputStream();
-		String newFileName = randomString().concat(".png");
-		Path folderPath = Paths.get("images");
-		if (!Files.exists(folderPath)) {
-			Files.createDirectory(folderPath);
-		}
-		Path filePath = Paths.get(folderPath + "/" + newFileName);
-		OutputStream output = Files.newOutputStream(filePath);
-		IOUtils.copy(input, output);
-		output.close();
-		input.close();
+	/*
+	 * Upload image to server by:
+	 * 1. Compressing image
+	 * 2. Saving image to server
+	 * 3. Saving image object with path file to database
+	 * @param imageFile - image file
+	 * @throws IOException - if no such path/file (Internal server error)
+	 */
+	public void uploadImage(@NotNull MultipartFile imageFile) throws IOException {
+		String newFileName = imageSaverUtils.saveImage(imageFile);
 		User user = userService.getUserOrElseCreate();
 		Image image = Image.builder()
 		                   .author(user)
@@ -50,22 +50,9 @@ public class ImageService {
 		imageRepository.save(image);
 		userService.saveUser(user);
 	}
-
-	public String randomString() {
-		int leftLimit = 'a';
-		int rightLimit = 'z';
-		int targetStringLength = 20;
-		Random random = new Random();
-
-		return random.ints(leftLimit, rightLimit + 1)
-		             .limit(targetStringLength)
-		             .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-		             .toString();
-	}
-
 	public ResponseEntity<String> getAllImagesWithResult() {
 		List<Image> imageList = imageRepository.findAll();
-		// - for ascending order
+		// - for descending order
 		imageList.sort(Comparator.comparing(x -> -x.getVoters()
 		                                           .size()));
 		return freeMarkerService.getResponseEntityHTML("results.ftl", "imageList", imageList);
