@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'com.highschool.image.vote'
+group = 'com.picscore'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '15'
 targetCompatibility = '15'
@@ -42,7 +42,7 @@ dependencies {
 }
 
 springBoot {
-    mainClass = 'com.highschool.image.vote.ImageVoteApplication'
+    mainClass = 'com.picscore.PicScoreApplication'
 }
 
 test {
