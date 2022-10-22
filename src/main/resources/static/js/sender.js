@@ -35,9 +35,11 @@ $(document).on("change", "#imagesLoader", function () {
 let iterator = 0;
 
 const previewNextImage = function () {
+    document.getElementById("nextImage").disabled = true;
     iterator++;
     iterator %= document.getElementById("imagesLoader").files.length;
     loadFile(iterator);
+    document.getElementById("nextImage").disabled = false;
 }
 
 const loadFiles = function () {

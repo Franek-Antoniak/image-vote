@@ -1,4 +1,4 @@
-package com.picscore.error;
+package com.picscore.exception;
 
 public class IllegalCallException extends Exception {
 	public IllegalCallException(String errorMessage) {

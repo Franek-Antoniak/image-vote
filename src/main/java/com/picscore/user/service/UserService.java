@@ -1,9 +1,11 @@
-package com.picscore.user;
+package com.picscore.user.service;
 
 
-import com.picscore.freemarker.FreeMarkerService;
+import com.picscore.freemarker.service.FreeMarkerService;
 import com.picscore.image.Image;
-import com.picscore.image.ImageRepository;
+import com.picscore.image.repository.ImageRepository;
+import com.picscore.user.User;
+import com.picscore.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.picscore.error;
+package com.picscore.exception;
 
 public class DataBaseSelectException extends Exception {
 	public DataBaseSelectException(String errorMessage) {

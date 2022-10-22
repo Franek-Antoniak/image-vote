@@ -1,7 +1,8 @@
-package com.picscore.image;
+package com.picscore.image.controller;
 
 
-import com.picscore.error.IllegalCallException;
+import com.picscore.exception.IllegalCallException;
+import com.picscore.image.service.ImageService;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

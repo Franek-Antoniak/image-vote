@@ -1,5 +1,6 @@
-package com.picscore.user;
+package com.picscore.user.controller;
 
+import com.picscore.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

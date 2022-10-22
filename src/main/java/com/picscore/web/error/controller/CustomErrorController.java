@@ -1,6 +1,6 @@
-package com.picscore.error;
+package com.picscore.web.error.controller;
 
-import com.picscore.freemarker.FreeMarkerService;
+import com.picscore.freemarker.service.FreeMarkerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;

@@ -1,5 +1,6 @@
-package com.picscore.freemarker;
+package com.picscore.freemarker.service;
 
+import com.picscore.freemarker.config.FreeMakerConfig;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class FreeMarkerService {
 
-	private final FreeMakerConfigBean configBean;
+	private final FreeMakerConfig freeMakerConfig;
 
 	public <T> ResponseEntity<String> getResponseEntityHTML(String templateName, String parameterName, T object) {
 		return ResponseEntity.ok(getOutputHtml(getDataModel(parameterName, object), getTemplateByName(templateName)));
@@ -44,7 +45,7 @@ public class FreeMarkerService {
 	private Template getTemplateByName(String templateName) {
 		Template template;
 		try {
-			template = configBean.getCfg()
+			template = freeMakerConfig.getCfg()
 			                     .getTemplate(templateName);
 		} catch (IOException e) {
 			throw new IllegalStateException(String.format("Template %s not found. %s", templateName, e.getMessage()));

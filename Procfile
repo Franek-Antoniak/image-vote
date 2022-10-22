@@ -1,1 +1,1 @@
-web: java -jar build/libs/image-vote-0.0.1-SNAPSHOT.jar
+web: java -jar build/libs/picscore-0.0.1-SNAPSHOT.jar

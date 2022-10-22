@@ -1,10 +1,12 @@
-package com.picscore.image;
+package com.picscore.image.service;
 
-import com.picscore.error.IllegalCallException;
-import com.picscore.freemarker.FreeMarkerService;
+import com.picscore.exception.IllegalCallException;
+import com.picscore.freemarker.service.FreeMarkerService;
+import com.picscore.image.Image;
+import com.picscore.image.repository.ImageRepository;
 import com.picscore.image.utils.ImageSaverUtils;
 import com.picscore.user.User;
-import com.picscore.user.UserService;
+import com.picscore.user.service.UserService;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

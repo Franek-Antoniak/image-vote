@@ -4,7 +4,7 @@
 </a>
 
 # PicScore 
-[![Activity](https://img.shields.io/github/commit-activity/m/Franek-Antoniak/image-vote)](https://github.com/Franek-Antoniak/image-vote) [![CodacyGrade](https://app.codacy.com/project/badge/Grade/a7c4e661039547eea4fe1369b3cb41ff)](https://www.codacy.com/gh/Franek-Antoniak/image-vote/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Franek-Antoniak/image-vote&amp;utm_campaign=Badge_Grade) [![LastCommit](https://img.shields.io/github/last-commit/Franek-Antoniak/image-vote)](https://github.com/Franek-Antoniak/image-vote) [![Deploy](https://img.shields.io/github/deployments/Franek-Antoniak/image-vote/rate-photo)](https://rate-photo.herokuapp.com/)
+[![Activity](https://img.shields.io/github/commit-activity/m/Franek-Antoniak/picscore)](https://github.com/Franek-Antoniak/picscore) [![CodacyGrade](https://app.codacy.com/project/badge/Grade/a7c4e661039547eea4fe1369b3cb41ff)](https://www.codacy.com/gh/Franek-Antoniak/picscore/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Franek-Antoniak/picscore&amp;utm_campaign=Badge_Grade) [![LastCommit](https://img.shields.io/github/last-commit/Franek-Antoniak/picscore)](https://github.com/Franek-Antoniak/picscore) [![Deploy](https://img.shields.io/github/deployments/Franek-Antoniak/picscore/picscore)](https://picscore.herokuapp.com/)
 > Who has the best photo? You decide!
 
 PicScore is an application for schools, organisations, groups of friends or any people who want to make a competition between themselves for the best photo. 
@@ -15,7 +15,7 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 * If you add more than one photo, scroll them through the **preview**. 
 * Delete photos you've added by mistake.
 * **Zoom** in and out on photos in the **gallery**.
-* Cast **hree votes** for the **best** images added by your friends!
+* Cast **three votes** for the **best** images added by your friends!
 * See live how many votes your **photos** get.
 * Once the voting is over, the **teacher/administrator** will give you the **results**.
 * **Restart** the application when you have finished playing!
@@ -36,9 +36,9 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 
 
 ## Heroku instance
-If you want to try out the app you can use my instance on heroku: [Link to app](https://rate-photo.herokuapp.com/)
+If you want to try out the app you can use my instance on heroku: [Link to app](https://picscore.herokuapp.com/)
 <br/>
-You only need a google account to start using the application as user.
+You only need a Google account to start using the application as user.
 <br/>
 To log in as administrator and have more permissions you need additional login details.
 <br/>

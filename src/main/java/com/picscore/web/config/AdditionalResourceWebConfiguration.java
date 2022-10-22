@@ -1,4 +1,4 @@
-package com.picscore.config;
+package com.picscore.web.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

@@ -1,4 +1,4 @@
-package com.picscore.user;
+package com.picscore.user.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

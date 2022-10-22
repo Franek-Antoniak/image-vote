@@ -1,5 +1,6 @@
-package com.picscore.user;
+package com.picscore.user.repository;
 
+import com.picscore.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

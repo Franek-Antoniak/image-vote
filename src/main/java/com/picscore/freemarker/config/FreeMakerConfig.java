@@ -1,4 +1,4 @@
-package com.picscore.freemarker;
+package com.picscore.freemarker.config;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateExceptionHandler;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.Locale;
 
 @org.springframework.context.annotation.Configuration
-public class FreeMakerConfigBean {
+public class FreeMakerConfig {
 	@Bean
 	public Configuration getCfg() {
 

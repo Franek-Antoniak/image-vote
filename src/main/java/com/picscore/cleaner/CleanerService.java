@@ -1,7 +1,7 @@
 package com.picscore.cleaner;
 
-import com.picscore.image.ImageRepository;
-import com.picscore.user.UserRepository;
+import com.picscore.image.repository.ImageRepository;
+import com.picscore.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +17,6 @@ public class CleanerService {
 
 
 	public void clearDataBase() {
-		userRepository.deleteAll();
-		imageRepository.deleteAll();
 		File[] files = Paths.get("images")
 		                    .toFile()
 		                    .listFiles();
