@@ -8,7 +8,7 @@
 > Who has the best photo? You decide!
 
 PicScore is an application for schools, organisations, groups of friends or any people who want to make a competition between themselves for the best photo. 
-<br/>
+<br>
 It is built on a simple student-teacher architecture. Feel free to use it through my heroku instance or build the project on your own computer!
 
 * Add your own **photos**.
@@ -26,29 +26,22 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 - [Roles](#roles)
     - [User](#user)
     - [Administrator](#administrator)
-- [Technology stack](#technology-stack)
-    - [Java](#java)
-    - [Spring](#java)
-    - [Gradle](#java)
-    - [Frontend](#java)
-    - [Heroku](#java)
+- [Technological description](#technological-description)
+    - [Front-end](#front-end)
+    - [Back-end](#back-end)
+    - [Database](#database)
+    - [Deployment](#deployment)
 - [Screenshots](#screenshots)
 
 
 ## Heroku instance
-If you want to try out the app you can use my instance on heroku: [Link to app](https://picscore.herokuapp.com/)
-<br/>
-You only need a Google account to start using the application as user.
-<br/>
-To log in as administrator and have more permissions you need additional login details.
-<br/>
-<details>
-<summary>Credentials</summary>
-  
-```Login: admin```
-</br>
-```Password: pass```
-</details>
+ 
+- If you want to try out the app you can use my instance on **[Heroku](https://picscore.herokuapp.com/)** <br>
+- You only need a Google account to start using the application as user <br>
+- To log in as administrator and have more permissions you need additional login details
+<details> <summary>Credentials</summary>
+<code> Login: admin</code> <br>
+<code>Password: pass</code></details>
 
 
 ## Roles
@@ -62,40 +55,68 @@ To log in as administrator and have more permissions you need additional login d
 * deletion of all data
 * preview of results
 
-## Technology stack
+## Technological description
 
-### Java
+### Front-end
+> - The front-end of the application is built using HTML, CSS and JavaScript. 
+> - jQuery is used for DOM manipulation and AJAX requests to communicate with the back-end. 
+> - Bootstrap is used for the responsive design of the application. 
+> - I have used modals to show the images on the side of the app rather than redirecting to another page. 
+> - The front-end also collects data via Google Analytics on how many users use the app over a certain period of time. 
+> - Login with Google is used for the authentication of the users along with the basic login form.
 
-### Spring 
-* SpringBoot
-* JPA with Hibernate and H2DB
-* Spring Security with Google OAUTH2
-* REST API
-* Lombok
-* Object Mapper with DTO
-* FreeMarker
+### Back-end 
 
-### Gradle
+#### *In a nutshell, the back-end is divided into 3 modules:*
+> ##### Web
+> - The web module contains the controllers which handle the requests from the front-end.
+> - It also contains the configuration for the application.
+> ##### Service
+> - The service module contains the business logic of the application.
+> ##### Repository
+> - The repository module contains the data access layer of the applicatio
 
-### Frontend
-* JavaScript
-* HTML5
-* CSS3
-* Bootstrap5
+#### *Detailed description*
+> - To implement the back-end, I have used Java 15 along with the Spring framework with the following modules: 
+>> - Spring Boot
+>> - Spring Data
+>> - Spring Security
+>> - Spring MVC. 
+> - For the build system, I have used Gradle. 
+> - For the template engine, I have used FreeMarker. 
+> - Other libraries in the project:
+>> - Object Mapper
+>> - Lombok
+>> - Hibernate
+>> - H2 Database
+>> - Google OAUTH2
+> - Patterns such as MVC, Builder, Observer, Singleton, State, and Proxy were used in the design all across of the application.
+> - All connections are authorized, and the user should not be able to find vulnerable places in the application. 
+> - The DTO helps to separate the structures of the individual entities in the database from the logic. 
+> - An image compression algorithm was used to optimise the speed of the front-end.
+> - I have also implemented exception controllers for unexpected actions by the user. 
+> - As the project is open-source, I have also added space for environment variables so that private keys and API secrets can be held securely.
 
-### Heroku
+
+### Database
+> - The database used in this application is H2 Database. Since it is an in-memory database, it does not need any configuration. 
+> - The schema and the data are automatically generated when the application starts.
+
+### Deployment
+> - The application has been deployed on Heroku platform. 
+> - Beyond that, I have used add-ons such as Librato and Raygun.
 
 # Screenshots
 
 <p align="center">
   <a href="https://github.com/Franek-Antoniak/image-vote">
-  <img src="https://i.imgur.com/XrRtR1f.gif" alt="Gallery" width="1060"/></a>
+  <img src="https://i.imgur.com/dLvnzap.gif" alt="Gallery" width="1060"/></a>
 </p>
 
 # 
 
 <p align="center">
-The project was originally commissioned by my high school computer science teacher. He needed a platform where his students could select the best photo in the class.
+<i>The project was originally commissioned by my high school computer science teacher. He needed a platform where his students could select the best photo in the class.</i>
 </p>
 
 #
