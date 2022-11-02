@@ -51,9 +51,9 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 * Vote for others' photos
 * See how many votes your photos got.
 ### Administrator
-* user capabilities
-* deletion of all data
-* preview of results
+* User capabilities
+* Deletion of all data
+* Preview of results
 
 ## Technological description
 
@@ -82,15 +82,17 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 >> - Spring Data
 >> - Spring Security
 >> - Spring MVC. 
-> - For the build system, I have used Gradle. 
+> - I have used Gradle for the build automation tool. 
 > - For the template engine, I have used FreeMarker. 
 > - Other libraries in the project:
->> - Object Mapper
+>> - Mapstruct
 >> - Lombok
 >> - Hibernate
+>> - Hibernate Validator
+>> - 
 >> - H2 Database
 >> - Google OAUTH2
-> - Patterns such as MVC, Builder, Observer, Singleton, State, and Proxy were used in the design all across of the application.
+> - Patterns such as MVC, Builder, DTO, Dependency Injection, and Proxy were used in the design all across of the application.
 > - All connections are authorized, and the user should not be able to find vulnerable places in the application. 
 > - The DTO helps to separate the structures of the individual entities in the database from the logic. 
 > - An image compression algorithm was used to optimise the speed of the front-end.
@@ -109,7 +111,7 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 # Screenshots
 
 <p align="center">
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://i.imgur.com/dLvnzap.gif" alt="Gallery" width="1060"/></a>
 </p>
 
@@ -121,28 +123,31 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 
 #
 <p align="center">
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white" alt="Java"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white" alt="Heroku"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
+  <img src="https://img.shields.io/badge/Gradle-%2302303A.svg?style=for-the-badge&logo=hibernate&logoColor=white" alt="Gradle"/>
+  </a>
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white" alt="Spring"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Google"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5"/>
   </a>
-  <a href="https://github.com/Franek-Antoniak/image-vote">
+  <a href="https://github.com/Franek-Antoniak/picscore">
   <img src="https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
   </a>
 </p>
