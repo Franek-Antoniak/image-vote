@@ -89,7 +89,6 @@ It is built on a simple student-teacher architecture. Feel free to use it throug
 >> - Lombok
 >> - Hibernate
 >> - Hibernate Validator
->> - 
 >> - H2 Database
 >> - Google OAUTH2
 > - Patterns such as MVC, Builder, DTO, Dependency Injection, and Proxy were used in the design all across of the application.
